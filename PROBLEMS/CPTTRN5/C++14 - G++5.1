@@ -1,0 +1,56 @@
+#include <iostream>
+
+using namespace std;
+
+int main () {
+	int caseCount;
+	cin >> caseCount;
+	int cases [caseCount][3];
+	for(int i = 0; i < caseCount; i++) {
+		cin >> cases[i][0] >> cases[i][1] >> cases[i][2];
+	}
+	for(int i = 0; i < caseCount; i++) {
+		for(int q = 0; q < cases[i][0]*(cases[i][2]+1); q++) { //visina
+			if(q%(cases[i][2]+1)!=0) {
+				for(int w = 0; w < cases[i][1]*(cases[i][2]+1); w++) { //�irina
+					if(w%(cases[i][2]+1)==0) {
+						cout << "*";
+					} else if (((q)/(cases[i][2]+1))%2==0) {
+						if(((w)/(cases[i][2]+1))%2==0 && ((w)%(cases[i][2]+1))==((q))%(cases[i][2]+1)) {
+							cout << "\\";
+						} else if (((w+cases[i][2])/(cases[i][2]+1))%2==0 && ((w)%(cases[i][2]+1))+((q-1))%(cases[i][2]+1)==(cases[i][2])) {
+							cout << "/";
+						} else {
+							cout << ".";
+						}
+					} else if (((q)/(cases[i][2]+1))%2==1) {
+						if(((w)/(cases[i][2]+1))%2==0 && ((w)%(cases[i][2]+1))+((q-1))%(cases[i][2]+1)==(cases[i][2])) {
+							cout << "/";
+						} else if (((w+cases[i][2])/(cases[i][2]+1))%2==0 && ((w)%(cases[i][2]+1))==((q))%(cases[i][2]+1)) {
+							cout << "\\";
+						} else {
+							cout << ".";
+						}
+					} else {
+						cout << ".";
+					}
+				}
+				cout << "*";
+			} else {
+				cout << "*";
+				for(int a = 0; a < (cases[i][2]+1)*cases[i][1]; a++) {
+					cout << "*";
+				}
+			}
+			cout << endl;
+		}
+		
+		cout << "*";
+				for(int a = 0; a < (cases[i][2]+1)*cases[i][1]; a++) {
+					cout << "*";
+				}
+		cout << endl;
+		cout << endl;
+	}
+	return 0;
+}
