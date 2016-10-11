@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int main () {
+	int caseCount;
+	cin >> caseCount;
+	int cases [caseCount][4];
+	for(int i = 0; i < caseCount; i++) {
+		cin >> cases[i][0] >> cases[i][1] >> cases[i][2] >> cases[i][3];
+	}
+	for(int i = 0; i < caseCount; i++) {
+		for(int q = 0; q < cases[i][0]*(cases[i][2]+1); q++) {
+			if(q%(cases[i][2]+1)!=0) {
+				for(int w = 0; w < cases[i][1]*(cases[i][3]+1); w++) {
+					if(w%(cases[i][3]+1)==0) {
+						cout << "*";
+					} else {
+						cout << ".";
+					}
+				}
+				cout << "*";
+			} else {
+				cout << "*";
+				for(int a = 0; a < (cases[i][3]+1)*cases[i][1]; a++) {
+					cout << "*";
+				}
+			}
+			cout << endl;
+		}
+		
+		cout << "*";
+				for(int a = 0; a < (cases[i][3]+1)*cases[i][1]; a++) {
+					cout << "*";
+				}
+		cout << endl;
+		cout << endl;
+	}
+	return 0;
+}
