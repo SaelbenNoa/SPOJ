@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+int main () {
+	int caseCount;
+	cin >> caseCount;
+	int cases [caseCount][4];
+	for(int i = 0; i < caseCount; i++) {
+		cin >> cases[i][0] >> cases[i][1] >> cases[i][2] >> cases[i][3];
+	}
+	for(int i = 0; i < caseCount; i++) {
+		for(int a = 1; a <= ((cases[i][0]*(cases[i][2]+1))+cases[i][2]); a++) {
+			for(int b = 1; b <= ((cases[i][1]*(cases[i][3]+1))+cases[i][3]); b++) {
+				if(b%(cases[i][3]+1)==0) {
+					if(a%(cases[i][2]+1)==0) {
+					cout << "+";
+					} else {
+					cout << "|";
+					}
+				} else {
+					if(a%(cases[i][2]+1)==0) {
+						cout << "-";
+					} else {
+						cout << ".";
+					}
+				}
+			}
+			cout << endl;
+		}
+		cout << endl;
+	}
+	return 0;
+}
